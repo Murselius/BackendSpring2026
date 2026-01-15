@@ -1,1 +1,1 @@
-T„m„ kansio sis„lt„„ viikon yksi palautettavat teht„v„t 
+This folder contains the project file for the first week assignments
