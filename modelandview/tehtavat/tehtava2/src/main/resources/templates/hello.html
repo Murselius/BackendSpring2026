@@ -1,0 +1,12 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <body>
+        <!--Luodaan uusi div osio ja annetaan alkuun thymeleaf muodossa welcome teksti-->
+            <div th:text="'Welcome to the Haaga-Helia!'"></div>
+            <!--toinen div johon iteroidaan jokainen student -olio students listassa-->
+            <div th:each="student: ${students}">
+                <span th:text="${student.firstName}">firstName</span>
+                <span th:text="${student.lastName}">lastName</span>
+            </div>
+    </body>
+</html>

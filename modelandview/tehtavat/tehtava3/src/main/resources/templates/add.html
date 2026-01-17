@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <body>
+        <!--Luodaan uusi header osio ja annetaan alkuun thymeleaf muodossa my friends teksti-->
+            <h2 th:text="'Add new friend to list'"></h2>
+            <!--form jonka kautta kysytään uuden friend olion tiedot-->
+            <form th:action="@{/add}" th:object="${friend}" method="post">
+            <label>First name:<input type='text' th:field="*{firstName}"/>
+          </label>
+            <label>Last name:<input type='text' th:field="*{lastName}"/>
+          </label>
+            <button th:type="submit">Add Friend</button>
+            </form>
+    </body>
+</html>

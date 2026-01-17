@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <body>
+        <!--Luodaan uusi header osio ja annetaan alkuun thymeleaf muodossa my friends teksti-->
+            <h2 th:text="'My friends'"></h2>
+            <span><b th:text="'Name'" ></b></span>
+            <!--div johon iteroidaan jokainen student -olio students listassa-->
+            <div th:each="friend: ${friends}">
+                <span th:text="${friend.firstName}">firstName</span>
+                <span th:text="${friend.lastName}">lastName</span>
+            </div>
+
+            <p><a th:href="@{/add}">Add friend</a></p>
+    </body>
+</html>
