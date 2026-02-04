@@ -24,10 +24,10 @@ public class BookstoreApplication {
 	public CommandLineRunner bookDemo(BookRepository repository) {
 		return (args) -> {
 			log.info("save a couple of example books");
-			repository.save(new Book(0, "A Farewell to Arms", "Ernest Hemingway", 1929, "1232323-21", 44.95));
-			repository.save(new Book(1, "Animal Farm", "George Orwell", 1945, "2212343-5", 39.95));	
+			repository.save(new Book("A Farewell to Arms", "Ernest Hemingway", 1929, "1232323-21", 44.95));
+			repository.save(new Book("Animal Farm", "George Orwell", 1945, "2212343-5", 39.95));	
 			
-			log.info("fetch all students");
+			log.info("fetch all books");
 			for (Book book : repository.findAll()) {
 				log.info(book.toString());
 			}
