@@ -1,11 +1,15 @@
 package bookstore.bookstore.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Book {
@@ -13,12 +17,16 @@ public class Book {
     @Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long bookId;
+
+    @NotEmpty(message= "Kirjan nimi ei voi olla tyhjä.")
+    @Size(min= 3, max = 250, message = "Kirjan nimen pituus on 3 - 250 merkkiä.")
     private String title;
     private String author;
     private int publicationYear;
     private String isbn;
     private double price;
 
+    @JsonIgnoreProperties("books")
     @ManyToOne
     @JoinColumn(name = "categoryid")
     private Category category;
