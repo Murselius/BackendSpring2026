@@ -3,12 +3,11 @@ package bookstore.bookstore.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="UserTable")
+@Table(name="app_user")
 public class AppUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, updatable = false)
     private Long id;
 
     // Username with unique constraint

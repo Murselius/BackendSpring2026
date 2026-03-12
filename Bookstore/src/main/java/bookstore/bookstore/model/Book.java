@@ -2,6 +2,7 @@ package bookstore.bookstore.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,20 +16,26 @@ import jakarta.validation.constraints.Size;
 public class Book {
 
     @Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long bookId;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long id;
+
 
     @NotEmpty(message= "Kirjan nimi ei voi olla tyhjä.")
     @Size(min= 3, max = 250, message = "Kirjan nimen pituus on 3 - 250 merkkiä.")
+    @Column(name= "title", nullable = false)
     private String title;
+    @Column(name= "author", nullable = false)
     private String author;
+    @Column(name= "publication_year", nullable = false)
     private int publicationYear;
+    @Column(name= "isbn", nullable = false)
     private String isbn;
+    @Column(name= "price", nullable = false)
     private double price;
 
     @JsonIgnoreProperties("books")
     @ManyToOne
-    @JoinColumn(name = "categoryid")
+    @JoinColumn(name = "category_id")
     private Category category;
 
     public Book(String title, String author, int publicationYear, String isbn, double price, Category category) {
@@ -43,12 +50,12 @@ public class Book {
 
     public Book() {}
 
-    public Long getBookId() {
-		return bookId;
+    public Long getId() {
+		return id;
 	}
 
-	public void setBookId(Long id) {
-		this.bookId = id;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
     public String getTitle() {
@@ -101,7 +108,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book [id=" + bookId + ", title=" + title + ", author=" + author + ", publicationYear=" + publicationYear
+        return "Book [id=" + id + ", title=" + title + ", author=" + author + ", publicationYear=" + publicationYear
                 + ", isbn=" + isbn + ", price=" + price + "]";
     }
 

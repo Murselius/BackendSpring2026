@@ -10,8 +10,10 @@ import jakarta.persistence.*;
 public class Category {
     
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-	private Long categoryid;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long id;
+
+    @Column(name= "name", nullable = false)
 	private String name;
 
     @JsonIgnoreProperties("category")
@@ -25,12 +27,12 @@ public class Category {
         this.name = name;
     }
 
-    public Long getCategoryid() {
-        return categoryid;
+    public Long getId() {
+        return id;
     }
 
-    public void setCategoryid(Long categoryid) {
-        this.categoryid = categoryid;
+    public void setId(Long categoryid) {
+        this.id = categoryid;
     }
 
     public String getName() {
@@ -51,7 +53,7 @@ public class Category {
 
     @Override
     public String toString() {
-        return "Category [categoryid=" + categoryid + ", name=" + name + "]";
+        return "Category [categoryid=" + id + ", name=" + name + "]";
     }
 
 }
